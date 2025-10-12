@@ -5,6 +5,10 @@
   --neon: #2ec4ff;
   --text: #eaeaea;
   --muted: #a7a7a7;
+    --toast-bg: rgba(0, 0, 0, 0.85);
+  --toast-text: #fff;
+  --toast-success: #00e676;
+  --toast-error: #ff5252;
 }
 
 /* base */
@@ -128,7 +132,7 @@ body.modal-open {
   overflow: hidden;
   border-bottom: 1px solid rgba(255, 255, 255, 0.04);
   background: linear-gradient(180deg, rgba(0,0,0,0.7), rgba(0,0,0,0.85)),
-              url('/src/assets/hero-bg.png') center/cover no-repeat;
+              url('/images/hero-bg-mobile.png') center/cover no-repeat;
   /* background: #000;
   background: linear-gradient(180deg, rgba(0,0,0,0.7), rgba(0,0,0,0.85)),
               url('/src/assets/hero-bg.png') center/cover no-repeat; */
@@ -137,14 +141,14 @@ body.modal-open {
 
 @media (max-width: 1024px) {
   .hero {
-    background-image: url('/src/assets/hero-bg-mobile.png');
+    background-image: url('/images/hero-bg-mobile.png');
   }
 }
 
 @media (max-width: 768px) {
   .hero {
    background: linear-gradient(180deg, rgba(0,0,0,0.7), rgba(0,0,0,0.85)),
-              url('/src/assets/hero-bg-mobile.png') center/cover no-repeat;
+              url('/images/hero-bg-mobile.png') center/cover no-repeat;
 }
 }
 
@@ -153,7 +157,7 @@ body.modal-open {
   content: "";
   position: absolute;
   inset: 0;
-  background: url("/src/assets/hero-bg-mobile.png") center/cover no-repeat;
+  background: url("/images/hero-bg-mobile.png") center/cover no-repeat;
   /* opacity: 0.25; */
   z-index: 0;
 }
@@ -163,8 +167,8 @@ body.modal-open {
   inset: 0;
   background: radial-gradient(
     circle at top left,
-    rgba(0, 0, 0, 0.8) 0%,
-    rgba(0, 0, 0, 0.95) 100%
+    rgba(0, 0, 0, 0.425) 0%,
+    rgba(0, 0, 0, 0.712) 100%
   );
   z-index: 1;
 }
@@ -556,7 +560,7 @@ body.modal-open {
   color: #fff;
   padding: 2rem;
   border-radius: 1rem;
-  box-shadow: 0 0 15px rgba(0,255,180,0.4);
+  box-shadow: 0 0 30px rgba(46, 196, 255, 0.2);;
   width: 90%;
   max-width: 420px;
   animation: pop 0.3s ease;
@@ -579,7 +583,7 @@ body.modal-open {
   width: 30%;
   cursor: pointer;
   text-align: center;
-  border: 1px solid rgba(0,255,180,0.3);
+  border: 1px solid 0 0 30px rgba(46, 196, 255, 0.2);;
   border-radius: 0.75rem;
   padding: 0.5rem;
   transition: all 0.3s ease;
@@ -592,7 +596,7 @@ body.modal-open {
 
 .option.active {
   background: rgba(0,255,180,0.1);
-  box-shadow: 0 0 10px rgba(0,255,180,0.4);
+  box-shadow: 0 0 30px rgba(46, 196, 255, 0.2);;
 }
 
 .actions {
@@ -618,9 +622,9 @@ body.modal-open {
 }
 
 .confirm-btn {
-  background: #00ffb4;
+  background: #2ec4ff;
   color: #000;
-  box-shadow: 0 0 10px #00ffb4;
+  box-shadow: 0 0 10px #2ec4ff;
 }
 
 .modal-overlay {
@@ -643,7 +647,7 @@ body.modal-open {
   padding: 24px;
   width: 90%;
   max-width: 480px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  box-shadow: 0 0 30px rgba(46, 196, 255, 0.2);;
   animation: scaleIn 0.3s ease;
 }
 
@@ -655,4 +659,26 @@ body.modal-open {
 @keyframes scaleIn {
   from { transform: scale(0.9); opacity: 0; }
   to { transform: scale(1); opacity: 1; }
+}
+
+/* TOASTS STYLES */
+.toastify__toast {
+  border-radius: 12px !important;
+  font-family: 'Poppins', sans-serif;
+}
+
+.react-hot-toast {
+  font-size: 15px;
+}
+
+.toast-success {
+  background: var(--toast-bg);
+  color: var(--toast-success);
+  font-weight: 500;
+}
+
+.toast-error {
+  background: var(--toast-bg);
+  color: var(--toast-error);
+  font-weight: 500;
 }

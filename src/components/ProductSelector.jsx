@@ -1,25 +1,35 @@
 import React, { useState, useEffect } from 'react';
 import { useCart } from '../store/cart';
+import toast from 'react-hot-toast'; // ✅ import toast
 
 export default function ProductSelector({ product, onClose }) {
   const { add } = useCart();
   const [selected, setSelected] = useState(null);
 
-  // Disable background scroll while modal is open
+  // ✅ Disable background scroll while modal is open
   useEffect(() => {
     document.body.style.overflow = 'hidden';
-    return () => (document.body.style.overflow = 'auto');
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
   }, []);
 
+  // ✅ Available shirt options
   const OPTIONS = [
-    { id: 'classic', name: 'Classic Tee', img: '/src/assets/motive-thumb.png' },
-    { id: 'front', name: 'white f/b', img: '/src/assets/mv 2.png' },
-    { id: 'back', name: 'Black f/b', img: '/src/assets/mv 3.png' },
+    { id: 'classic', name: 'Classic Tee', img: '/images/motive-thumb.png' },
+    { id: 'front', name: 'White f/b', img: '/images/mv 2.png' },
+    { id: 'back', name: 'Black f/b', img: '/images/mv 3.png' },
   ];
 
+  // ✅ Confirm selection and add to cart
   const handleConfirm = () => {
-    if (!selected) return alert('Please select a shirt type.');
+    if (!selected) {
+      toast.error('Please select a shirt type.');
+      return;
+    }
+
     add({ ...product, variant: selected.name, img: selected.img, qty: 1 });
+    toast.success(`${selected.name} added to cart!`);
     onClose();
   };
 
@@ -27,7 +37,7 @@ export default function ProductSelector({ product, onClose }) {
     <div className="selector-overlay" onClick={onClose}>
       <div
         className="selector-modal"
-        onClick={(e) => e.stopPropagation()} // Prevent closing on inner click
+        onClick={(e) => e.stopPropagation()} // prevent closing when clicking inside
       >
         <h3 className="selector-title">Select your {product.title}</h3>
 
