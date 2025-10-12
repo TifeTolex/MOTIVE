@@ -37,9 +37,9 @@ export default function Home(){
       <section id="collections" className="section">
         <h2 className="section-title">COLLECTIONS</h2>
         <div className="collections">
-          <div className="col">Essentials</div>
+          <div className="col">Driven Drops</div>
           <div className="col">Urban</div>
-          <div className="col">Athleisure</div>
+          <div className="col">Street made</div>
         </div>
       </section>
 
