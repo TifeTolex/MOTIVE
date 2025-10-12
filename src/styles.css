@@ -138,7 +138,7 @@ body.modal-open {
   overflow: hidden;
   border-bottom: 1px solid rgba(255, 255, 255, 0.04);
   background: linear-gradient(180deg, rgba(0,0,0,0.7), rgba(0,0,0,0.85)),
-              url('/images/hero-bg-mobile.png') center/cover no-repeat;
+              url('images/hero-bg-mobile.png') center/cover no-repeat;
   /* background: #000;
   background: linear-gradient(180deg, rgba(0,0,0,0.7), rgba(0,0,0,0.85)),
               url('/src/assets/hero-bg.png') center/cover no-repeat; */
@@ -163,7 +163,7 @@ body.modal-open {
   content: "";
   position: absolute;
   inset: 0;
-  background: url("/images/hero-bg-mobile.png") center/cover no-repeat;
+  background: url("images/hero-bg-mobile.png") center/cover no-repeat;
   /* opacity: 0.25; */
   z-index: 0;
 }
