@@ -9,7 +9,7 @@ export default function Footer() {
            <div>
         <strong>Contact</strong>
         <div>Email: motive.driven1@gmail.com</div>
-        <div>Phone: +234 701 484 7975</div>
+        <div>Phone: +234 701 484 7975 , 080000 0000</div>
       </div>
       <div></div>
         <div className="social-links">

@@ -1,16 +1,22 @@
 import React, { useState } from 'react'
 import { useCart } from '../store/cart'
+import { useNavigate } from 'react-router-dom'
+import { toast, ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 export default function Payment() {
-  const { items: cartItems, total, clearCart } = useCart()  // ✅ added clearCart
+  const { items: cartItems, total, clearCart } = useCart()
   const [name, setName] = useState('')
   const [address, setAddress] = useState('')
+  const navigate = useNavigate()
 
   if (!cartItems || cartItems.length === 0) {
     return (
       <section className="payment-page">
         <h2 className="payment-title">No Items in Cart</h2>
-        <p style={{ textAlign: 'center' }}>Please add some products before proceeding to payment.</p>
+        <p style={{ textAlign: 'center' }}>
+          Please add some products before proceeding to payment.
+        </p>
       </section>
     )
   }
@@ -34,21 +40,27 @@ export default function Payment() {
   const handleConfirm = (e) => {
     if (!isFormComplete) {
       e.preventDefault()
+      toast.warn('Please enter your name and address 📝')
       return
     }
 
-    // ✅ Clear the cart after redirect
+    // ✅ Show success message
+    toast.success('Payment details sent 🎉 Redirecting to home...', {
+      position: 'top-center',
+      autoClose: 2500,
+    })
+
+    // ✅ Let WhatsApp open first, then redirect & clear cart
     setTimeout(() => {
       clearCart()
-      // Optional reload or redirect after 1s
-      setTimeout(() => {
-        window.location.href = '/'
-      }, 1000)
-    }, 500)
+      navigate('/', { replace: true })
+    }, 3000)
   }
 
   return (
     <section className="payment-page">
+      <ToastContainer />
+
       <h2 className="payment-title">Complete Your Order</h2>
 
       {/* ✅ Cart Summary */}
@@ -82,8 +94,12 @@ export default function Payment() {
         <div className="account-box">
           <h3>MOTIVE CLOTHING</h3>
           <p>Bank: ACCESS BANK</p>
-          <p>Account Number: <strong>1655505452</strong></p>
-          <p>Account Name: <strong>OLAROGBA TOLUWANI FESTUS</strong></p>
+          <p>
+            Account Number: <strong>1655505452</strong>
+          </p>
+          <p>
+            Account Name: <strong>OLAROGBA TOLUWANI FESTUS</strong>
+          </p>
           <p>Total: ₦{total}</p>
         </div>
       </div>

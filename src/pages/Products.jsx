@@ -14,7 +14,7 @@ export default function Products() {
 
   return (
     <main className="products-page">
-      <h2>Select items</h2>
+      <h2 className='new-h2'>Select items</h2>
 
       <div className="products-grid">
         {PRODUCTS.map((p) => (
