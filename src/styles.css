@@ -24,6 +24,10 @@ body {
     Roboto, "Helvetica Neue", Arial;
   -webkit-font-smoothing: antialiased;
 }
+body.modal-open {
+  overflow: hidden;
+}
+
 
 /* splash */
 .splash-root {
@@ -534,4 +538,121 @@ body {
   font-weight: 700;
   font-size: 1rem;
   text-shadow: 0 0 6px rgba(46,196,255,0.5);
+}
+
+.selector-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.selector-modal {
+  background: #0a0a0a;
+  color: #fff;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 15px rgba(0,255,180,0.4);
+  width: 90%;
+  max-width: 420px;
+  animation: pop 0.3s ease;
+}
+
+@keyframes pop {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.options {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 1rem 0;
+  gap: 1rem;
+}
+
+.option {
+  width: 30%;
+  cursor: pointer;
+  text-align: center;
+  border: 1px solid rgba(0,255,180,0.3);
+  border-radius: 0.75rem;
+  padding: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.option img {
+  width: 100%;
+  border-radius: 0.5rem;
+}
+
+.option.active {
+  background: rgba(0,255,180,0.1);
+  box-shadow: 0 0 10px rgba(0,255,180,0.4);
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.close-btn,
+.confirm-btn {
+  flex: 1;
+  margin: 0 0.25rem;
+  padding: 0.7rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.close-btn {
+  background: #222;
+  color: #ccc;
+}
+
+.confirm-btn {
+  background: #00ffb4;
+  color: #000;
+  box-shadow: 0 0 10px #00ffb4;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  animation: fadeIn 0.3s ease;
+}
+
+.modal-container {
+  background: #fff;
+  border-radius: 16px;
+  padding: 24px;
+  width: 90%;
+  max-width: 480px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  animation: scaleIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
 }
