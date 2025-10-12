@@ -1,5 +1,6 @@
 import React from 'react'
 import ProductCard from '../components/ProductCard'
+import { Link } from "react-router-dom";
 
 const PRODUCTS = [
   { id: 1, title: 'Motive Tee', price: 13000, priceOld: 15000, img: '/src/assets/p1.svg', comingSoon: false },
@@ -14,10 +15,14 @@ export default function Home(){
     <main className="home">
       <section className="hero">
         <div className="hero-left">
-          <h1 className="hero-title">Style that moves you</h1>
-          <p className="hero-sub">Modern, confident, minimal. New arrivals out now.</p>
-          <button className="cta-btn">Shop Collection</button>
+          <h1 className="hero-title">STYLE IN MOTION</h1>
+          <p className="hero-sub">Not just clothes — a movement. MOTIVE defines the driven.</p>
+
+            <Link to="/products" className="cta-btn">
+          Shop Collection
+        </Link>
         </div>
+        
         {/* <div className="hero-right">
            <img src="/images/hero-model.png" alt="Motive Hero" /> */}
       </section>

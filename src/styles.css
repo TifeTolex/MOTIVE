@@ -123,15 +123,13 @@ body {
   position: relative;
   overflow: hidden;
   border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  background: linear-gradient(180deg, rgba(0,0,0,0.7), rgba(0,0,0,0.85)),
+              url('/src/assets/hero-bg.png') center/cover no-repeat;
   /* background: #000;
   background: linear-gradient(180deg, rgba(0,0,0,0.7), rgba(0,0,0,0.85)),
               url('/src/assets/hero-bg.png') center/cover no-repeat; */
 }
 
-.hero {
-  background: linear-gradient(180deg, rgba(0,0,0,0.7), rgba(0,0,0,0.85)),
-              url('/src/assets/hero-bg.png') center/cover no-repeat;
-}
 
 @media (max-width: 1024px) {
   .hero {
@@ -170,6 +168,7 @@ body {
 .hero-left {
   flex: 1;
   max-width: 640px;
+  padding: 10vh 10px ;
   position: relative;
   z-index: 2;
 }
@@ -185,6 +184,7 @@ body {
   color: var(--muted);
   max-width: 440px;
   line-height: 1.6;
+  padding: 0 0 20px;
 }
 
 .cta-btn {
@@ -201,6 +201,22 @@ body {
   transition: 0.3s ease;
   box-shadow: 0 0 20px rgba(46, 196, 255, 0.1);
 }
+
+.cta-btn {
+  margin-top: 2px;
+  background: transparent;
+  border: 2px solid var(--neon);
+  color: var(--neon);
+  padding: 12px 28px;
+  border-radius: 999px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: 0.3s ease;
+  box-shadow: 0 0 20px rgba(46, 196, 255, 0.1);
+  text-decoration: none;
+}
 .cta-btn:hover {
   background: var(--neon);
   color: #000;
@@ -208,7 +224,7 @@ body {
 }
 
 .hero-right {
-  display: n;
+  display: none;
   flex: 1;
   height: 420px;
   border-radius: 16px;
