@@ -3,6 +3,7 @@ import ProductCard from '../components/ProductCard'
 import { Link } from "react-router-dom";
 
 
+
 const PRODUCTS = [
   { id: 1, title: 'Motive Tee', price: 13000, priceOld: 15000, img: '/images/mv-new.png' , comingSoon: false },
   { id: 2, title: 'Motive Hoodie', price: 10000, img: '/images/new.png', comingSoon: true },

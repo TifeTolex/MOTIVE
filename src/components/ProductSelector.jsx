@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useCart } from '../store/cart';
 import toast from 'react-hot-toast'; // ✅ import toast
+import classicImg from '../assets/images/motive-classic.png';
+import whiteImg from '../assets/images/motive-white-variant.png';
+import blackImg from '../assets/images/motive-black-variant.png';
 
 export default function ProductSelector({ product, onClose }) {
   const { add } = useCart();
@@ -15,11 +18,11 @@ export default function ProductSelector({ product, onClose }) {
   }, []);
 
   // ✅ Available shirt options
-  const OPTIONS = [
-    { id: 'classic', name: 'Classic Tee', img: '/images/motive-classic.png' },
-    { id: 'front', name: 'White Variant', img: '/images/motive-white-variant.png' },
-    { id: 'back', name: 'Black Variant', img: '/images/motive-black-variant.png' },
-  ];
+ const OPTIONS = [
+  { id: 'classic', name: 'Classic Tee', img: classicImg },
+  { id: 'front', name: 'White Variant', img: whiteImg },
+  { id: 'back', name: 'Black Variant', img: blackImg },
+];
 
   // ✅ Confirm selection and add to cart
   const handleConfirm = () => {
