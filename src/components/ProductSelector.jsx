@@ -15,11 +15,12 @@ export default function ProductSelector({ product, onClose }) {
   }, []);
 
   // ✅ Available shirt options
-  const OPTIONS = [
-    { id: 'classic', name: 'Classic Tee', img: '/images/motive-classic.png' },
-    { id: 'front', name: 'White Variant', img: '/images/motiive-white-variant.png' },
-    { id: 'back', name: 'Black Variant', img: '/images/motive-black-variant.png' },
-  ];
+ const OPTIONS = [
+  { id: 'classic', name: 'Classic Tee', img: require('../public/images/motive-classic.png') },
+  { id: 'front', name: 'White Variant', img: require('../public/images/motive-white-variant.png') },
+  { id: 'back', name: 'Black Variant', img: require('../public/images/motive-black-variant.png') },
+];
+
 
   // ✅ Confirm selection and add to cart
   const handleConfirm = () => {
