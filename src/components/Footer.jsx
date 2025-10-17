@@ -9,12 +9,12 @@ export default function Footer() {
            <div>
         <strong>Contact</strong>
         <div>Email: motive.driven1@gmail.com</div>
-        <div>Phone: +234 701 484 7975 , 080000 0000</div>
+        <div>Phone: +234 701 484 7975</div>
       </div>
       <div></div>
         <div className="social-links">
           <a
-            href="https://twitter.com/yourhandle"
+            href="https://x.com/motive_brands?t=bpU2Qq0sgDw1KdaAU7uY_A&s=09"
             target="_blank"
             rel="noopener noreferrer"
             className="social-icon twitter"

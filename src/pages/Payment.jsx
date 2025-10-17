@@ -21,10 +21,17 @@ export default function Payment() {
     )
   }
 
+  // ✅ Include size in order summary
   const orderSummary = cartItems
-    .map((item) => `${item.name || item.title} (${item.variant || ''}) x${item.qty || 1}`)
+    .map(
+      (item) =>
+        `${item.name || item.title} (${item.variant || ''}${
+          item.size ? ` - ${item.size}` : ''
+        }) x${item.qty || 1}`
+    )
     .join(', ')
 
+  // ✅ Include size in WhatsApp message
   const whatsappMessage = encodeURIComponent(
     `Hello Motive 👋,\n\nI just made a payment for my order.\n\n` +
       `Name: ${name}\n` +
@@ -76,6 +83,12 @@ export default function Payment() {
                   {item.variant && (
                     <>
                       <span className="variant">{item.variant}</span>
+                      {item.size && (
+                        <>
+                          <span className="summary-separator"> – </span>
+                          <span className="size">Size: {item.size}</span>
+                        </>
+                      )}
                       <span className="summary-separator"> – </span>
                     </>
                   )}

@@ -11,6 +11,10 @@ import { CartProvider } from './store/cart';
 import ProductSelector from './components/ProductSelector';
 import { Toaster } from 'react-hot-toast'; // ✅ Toast system added
 
+// ✅ AOS Animation Library
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 export default function App() {
   const [showSplash, setShowSplash] = useState(true);
   const [showSelector, setShowSelector] = useState(false);
@@ -19,6 +23,16 @@ export default function App() {
   useEffect(() => {
     const timer = setTimeout(() => setShowSplash(false), 4000);
     return () => clearTimeout(timer);
+  }, []);
+
+  // ✅ Initialize AOS once
+  useEffect(() => {
+    AOS.init({
+      duration: 1000, // Animation duration (in ms)
+      easing: 'ease-in-out',
+      once: true, // Run only once per element
+      mirror: false, // Disable reverse animation on scroll-up
+    });
   }, []);
 
   const handleSelectProduct = (product) => {
