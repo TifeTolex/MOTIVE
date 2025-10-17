@@ -28,7 +28,7 @@ export default function App() {
   // ✅ Initialize AOS once
   useEffect(() => {
     AOS.init({
-      duration: 1000, // Animation duration (in ms)
+      duration:600,// Animation duration (in ms)
       easing: 'ease-in-out',
       once: true, // Run only once per element
       mirror: false, // Disable reverse animation on scroll-up

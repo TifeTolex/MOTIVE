@@ -989,11 +989,12 @@ body.modal-open {
 .selector-modal {
   background: #0a0a0a;
   color: #fff;
-  padding: 2rem;
+  padding: 1.5rem;
   border-radius: 1rem;
   box-shadow: 0 0 30px rgba(46, 196, 255, 0.2);;
   width: 90%;
-  max-width: 420px;
+  max-width: 500px;
+  overflow-y: auto;
   animation: pop 0.3s ease;
 }
 
@@ -1004,14 +1005,16 @@ body.modal-open {
 
 .options {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   flex-wrap: wrap;
   margin: 1rem 0;
   gap: 1rem;
 }
 
 .option {
-
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 30%;
   cursor: pointer;
   text-align: center;
@@ -1023,6 +1026,8 @@ body.modal-open {
 
 .option img {
   width: 100%;
+  height: auto;
+  object-fit: contain;
   border-radius: 0.5rem;
 }
 
@@ -1064,6 +1069,15 @@ body.modal-open {
   box-shadow: 0 0 10px #2ec4ff;
 }
 
+@media (max-width: 480px) {
+  .option-img {
+    width: 150px; /* make mobile images bigger */
+  }
+
+  .selector-modal {
+    padding: 1rem;
+  }
+}
 .modal-overlay {
   position: fixed;
   top: 0;
