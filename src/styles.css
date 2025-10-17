@@ -824,6 +824,8 @@ body.modal-open {
 .lightbox-caption {
   color: #fff;
   margin-top: 1rem;
+  max-height: 100%
+
 }
 
 .lightbox-close {

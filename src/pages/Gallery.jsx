@@ -122,7 +122,7 @@ export default function Gallery() {
 
       {isOpen && (
         <div className="custom-lightbox">
-          <div className="lightbox-content">
+          <div className="lightbox-caption">
             <img
               src={galleryItems[photoIndex].img}
               alt={galleryItems[photoIndex].title}
