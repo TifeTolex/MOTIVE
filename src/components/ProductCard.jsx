@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useCart } from '../store/cart';
+import Portal from './Portal';
 import ProductSelector from './ProductSelector';
 
 export default function ProductCard({ product }) {
@@ -8,7 +9,6 @@ export default function ProductCard({ product }) {
 
   const handleSelect = () => {
     if (!product.comingSoon) setShowSelector(true);
-    // Prevent background scroll when modal is open
     document.body.style.overflow = 'hidden';
   };
 
@@ -52,15 +52,18 @@ export default function ProductCard({ product }) {
         )}
       </div>
 
+      {/* ✅ Smooth Modal using Portal */}
       {showSelector && (
-        <div className="modal-overlay" onClick={handleClose}>
-          <div
-            className="modal-container"
-            onClick={(e) => e.stopPropagation()} // prevent closing when clicking inside
-          >
-            <ProductSelector product={product} onClose={handleClose} />
+        <Portal>
+          <div className="modal-overlay" onClick={handleClose}>
+            <div
+              className="modal-container"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <ProductSelector product={product} onClose={handleClose} />
+            </div>
           </div>
-        </div>
+        </Portal>
       )}
     </>
   );

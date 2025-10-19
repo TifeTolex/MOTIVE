@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Routes, Route, Link } from 'react-router-dom';
+import { Routes, Route, Link, useLocation } from 'react-router-dom';
 import Home from './pages/Home';
 import Products from './pages/Products';
 import Payment from './pages/Payment';
@@ -15,6 +15,15 @@ import { Toaster } from 'react-hot-toast'; // ✅ Toast system added
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
+// ✅ ScrollToTop Component (inline here for simplicity)
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [pathname]);
+  return null;
+}
+
 export default function App() {
   const [showSplash, setShowSplash] = useState(true);
   const [showSelector, setShowSelector] = useState(false);
@@ -28,7 +37,7 @@ export default function App() {
   // ✅ Initialize AOS once
   useEffect(() => {
     AOS.init({
-      duration:600,// Animation duration (in ms)
+      duration: 600, // Animation duration (in ms)
       easing: 'ease-in-out',
       once: true, // Run only once per element
       mirror: false, // Disable reverse animation on scroll-up
@@ -52,6 +61,9 @@ export default function App() {
       <div className={`app-root ${showSplash ? 'blurred' : ''}`}>
         <Header />
 
+        {/* ✅ Ensure scroll to top on route change */}
+        <ScrollToTop />
+
         <Routes>
           <Route path="/" element={<Home />} />
           <Route
@@ -64,13 +76,13 @@ export default function App() {
 
         <Footer />
       </div>
-
-      {/* Floating Gallery Button */}
+  {/* Floating Gallery Button */}
       <Link to="/gallery" className="floating-gallery-btn">
         ✨
       </Link>
+      
 
-      {/* Global Product Selector Modal */}
+      {/* ✅ Global Product Selector Modal */}
       {showSelector && (
         <ProductSelector product={selectedProduct} onClose={closeSelector} />
       )}

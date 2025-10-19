@@ -824,8 +824,6 @@ body.modal-open {
 .lightbox-caption {
   color: #fff;
   margin-top: 1rem;
-  max-height: 100%
-
 }
 
 .lightbox-close {
@@ -1389,3 +1387,23 @@ body.modal-open {
 /* optional custom additions */
 
 
+
+.copy-btn {
+  background: none;
+  border: none;
+  color: #22c55e;
+  cursor: pointer;
+  font-size: 0.9rem;
+  margin-left: 6px;
+  transition: 0.2s ease;
+}
+
+.copy-btn:hover {
+  color: #16a34a;
+}
+/* 
+.qr-code {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+} */

@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
+
 export default function Payment() {
   const { items: cartItems, total, clearCart } = useCart()
   const [name, setName] = useState('')
@@ -64,6 +65,16 @@ export default function Payment() {
     }, 3000)
   }
 
+  // ✅ Copy Account Number
+  const accountNumber = '1655505452'
+  const handleCopyAccount = () => {
+    navigator.clipboard.writeText(accountNumber)
+    toast.success('Account number copied 📋', {
+      position: 'bottom-center',
+      autoClose: 2000,
+    })
+  }
+
   return (
     <section className="payment-page">
       <ToastContainer />
@@ -78,7 +89,12 @@ export default function Payment() {
             <li key={i} className="summary-item">
               <img src={item.img} alt={item.name} className="summary-img" />
               <div className="summary-details">
-                <p className="summary-name">{item.name || item.title}</p>
+                <p className="summary-name">
+                  {item.name || item.title}
+                  {item.qty > 1 && (
+                    <span className="summary-qty"> ({item.qty}×)</span>
+                  )}
+                </p>
                 <small>
                   {item.variant && (
                     <>
@@ -92,13 +108,15 @@ export default function Payment() {
                       <span className="summary-separator"> – </span>
                     </>
                   )}
-                  <span className="summary-price">₦{item.price}</span>
+                  <span className="summary-price">
+                    ₦{(item.price * item.qty).toLocaleString()}
+                  </span>
                 </small>
               </div>
             </li>
           ))}
         </ul>
-        <h4>Total: ₦{total}</h4>
+        <h4>Total: ₦{total.toLocaleString()}</h4>
       </div>
 
       {/* ✅ Payment Instructions */}
@@ -107,13 +125,27 @@ export default function Payment() {
         <div className="account-box">
           <h3>MOTIVE CLOTHING</h3>
           <p>Bank: ACCESS BANK</p>
-          <p>
-            Account Number: <strong>1655505452</strong>
+          <p className="account-number">
+            Account Number: <strong>{1655505452}</strong>{' '}
+            <button onClick={handleCopyAccount} className="copy-btn">
+              Copy
+            </button>
           </p>
-          <p>
-            Account Name: <strong>OLAROGBA TOLUWANI FESTUS</strong>
-          </p>
+          <p>Account Name: <strong>OLAROGBA TOLUWANI FESTUS</strong></p>
           <p>Total: ₦{total}</p>
+
+          {/* ✅ QR Code for Account */}
+       {/* <div className="qr-code">
+  <QRCodeCanvas
+    value={`BANK: ACCESS BANK | ACCOUNT: ${accountNumber} | NAME: OLAROGBA TOLUWANI FESTUS | AMOUNT: ₦${total}`}
+    size={120}
+    bgColor="#0a0a0a"
+    fgColor="#ffffff"
+    level="Q"
+    includeMargin={true}
+  />
+</div> */}
+
         </div>
       </div>
 

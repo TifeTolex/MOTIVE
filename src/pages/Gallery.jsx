@@ -60,7 +60,6 @@ export default function Gallery() {
     setLikes(newLikes);
     setLikeCounts(newCounts);
   };
-
   const visibleItems = galleryItems.slice(0, visibleCount);
 
   const handleToggle = () => {
@@ -113,6 +112,7 @@ export default function Gallery() {
           </div>
         ))}
       </div>
+      
 
       <div className="gallery-loadmore">
         <button onClick={handleToggle}>
