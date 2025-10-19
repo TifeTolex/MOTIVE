@@ -9,19 +9,122 @@ import Footer from './components/Footer';
 import Splash from './components/Splash';
 import { CartProvider } from './store/cart';
 import ProductSelector from './components/ProductSelector';
-import { Toaster } from 'react-hot-toast'; // ✅ Toast system added
-
-// ✅ AOS Animation Library
+import { Toaster } from 'react-hot-toast';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { FaArrowUp } from 'react-icons/fa';
 
-// ✅ ScrollToTop Component (inline here for simplicity)
 function ScrollToTop() {
   const { pathname } = useLocation();
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [pathname]);
   return null;
+}
+
+// ✅ Floating Scroll Button (movable + saves position)
+function FloatingScrollButton() {
+  const [visible, setVisible] = useState(false);
+  const [position, setPosition] = useState(() => {
+    const saved = localStorage.getItem('floatingBtnPos');
+    return saved
+      ? JSON.parse(saved)
+      : { x: window.innerWidth - 80, y: 100 };
+  });
+
+  const [dragging, setDragging] = useState(false);
+  const [offset, setOffset] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setVisible(window.scrollY > 200);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const startDrag = (e) => {
+    e.preventDefault();
+    setDragging(true);
+    setOffset({ x: e.clientX - position.x, y: e.clientY - position.y });
+  };
+
+  const startTouch = (e) => {
+    setDragging(true);
+    const touch = e.touches[0];
+    setOffset({ x: touch.clientX - position.x, y: touch.clientY - position.y });
+  };
+
+  const moveDrag = (clientX, clientY) => {
+    const newPos = {
+      x: Math.max(20, Math.min(clientX - offset.x, window.innerWidth - 60)),
+      y: Math.max(20, Math.min(clientY - offset.y, window.innerHeight - 60)),
+    };
+    setPosition(newPos);
+  };
+
+  const duringDrag = (e) => {
+    if (!dragging) return;
+    moveDrag(e.clientX, e.clientY);
+  };
+
+  const duringTouchDrag = (e) => {
+    if (!dragging) return;
+    const touch = e.touches[0];
+    moveDrag(touch.clientX, touch.clientY);
+  };
+
+  const stopDrag = () => {
+    setDragging(false);
+    localStorage.setItem('floatingBtnPos', JSON.stringify(position));
+  };
+
+  useEffect(() => {
+    window.addEventListener('mousemove', duringDrag);
+    window.addEventListener('mouseup', stopDrag);
+    window.addEventListener('touchmove', duringTouchDrag);
+    window.addEventListener('touchend', stopDrag);
+    return () => {
+      window.removeEventListener('mousemove', duringDrag);
+      window.removeEventListener('mouseup', stopDrag);
+      window.removeEventListener('touchmove', duringTouchDrag);
+      window.removeEventListener('touchend', stopDrag);
+    };
+  }, [dragging, offset, position]);
+
+  if (!visible) return null;
+
+  return (
+    <button
+      onMouseDown={startDrag}
+      onTouchStart={startTouch}
+      onClick={scrollToTop}
+      style={{
+        position: 'fixed',
+        left: `${position.x}px`,
+        bottom: `${position.y}px`,
+        zIndex: 1000,
+        background: '#000',
+        color: '#fff',
+        border: 'none',
+        borderRadius: '50%',
+        width: '45px',
+        height: '45px',
+        cursor: dragging ? 'grabbing' : 'grab',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        boxShadow: '0 4px 10px rgba(0,0,0,0.3)',
+        transition: dragging ? 'none' : '0.2s ease',
+      }}
+    >
+      <FaArrowUp size={18} />
+    </button>
+  );
 }
 
 export default function App() {
@@ -34,13 +137,12 @@ export default function App() {
     return () => clearTimeout(timer);
   }, []);
 
-  // ✅ Initialize AOS once
   useEffect(() => {
     AOS.init({
-      duration: 600, // Animation duration (in ms)
+      duration: 600,
       easing: 'ease-in-out',
-      once: true, // Run only once per element
-      mirror: false, // Disable reverse animation on scroll-up
+      once: true,
+      mirror: false,
     });
   }, []);
 
@@ -60,8 +162,6 @@ export default function App() {
 
       <div className={`app-root ${showSplash ? 'blurred' : ''}`}>
         <Header />
-
-        {/* ✅ Ensure scroll to top on route change */}
         <ScrollToTop />
 
         <Routes>
@@ -76,18 +176,21 @@ export default function App() {
 
         <Footer />
       </div>
-  {/* Floating Gallery Button */}
+
+      {/* Floating Gallery Button */}
       <Link to="/gallery" className="floating-gallery-btn">
         ✨
       </Link>
-      
 
-      {/* ✅ Global Product Selector Modal */}
+      {/* ✅ Floating Scroll Button */}
+      <FloatingScrollButton />
+
+      {/* ✅ Product Selector */}
       {showSelector && (
         <ProductSelector product={selectedProduct} onClose={closeSelector} />
       )}
 
-      {/* ✅ Toast System */}
+      {/* ✅ Toast Notifications */}
       <Toaster
         position="top-center"
         toastOptions={{
