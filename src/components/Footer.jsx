@@ -1,25 +1,26 @@
 import React from "react";
-import { FaTwitter, FaTiktok } from "react-icons/fa";
+import { FaXTwitter, FaTiktok } from "react-icons/fa6"; // ✅ Updated icon import
 
 export default function Footer() {
   return (
     <footer className="footer">
       <div className="footer-content">
-       
-           <div>
-        <strong>Contact</strong>
-        <div>Email: motive.driven1@gmail.com</div>
-        <div>Phone: +234 701 484 7975</div>
-      </div>
-      <div></div>
+
+        <div>
+          <strong>Contact</strong>
+          <div>Email: motive.driven1@gmail.com</div>
+          <div>Phone: +234 701 484 7975</div>
+        </div>
+
         <div className="social-links">
+          {/* ✅ Updated to X (formerly Twitter) */}
           <a
             href="https://x.com/motive_brands?t=bpU2Qq0sgDw1KdaAU7uY_A&s=09"
             target="_blank"
             rel="noopener noreferrer"
-            className="social-icon twitter"
+            className="social-icon x"
           >
-            <FaTwitter />
+            <FaXTwitter />
           </a>
 
           <a
@@ -31,8 +32,10 @@ export default function Footer() {
             <FaTiktok />
           </a>
         </div>
-           <p className="footer-text">© {new Date().getFullYear()} Motive. Driven by Purpose.</p>
 
+        <p className="footer-text">
+          © {new Date().getFullYear()} Motive. Driven by Purpose.
+        </p>
       </div>
     </footer>
   );

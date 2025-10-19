@@ -15,8 +15,13 @@ export default function CartModal({open, onClose}){
           {items.map(it=>(
             <div className="cart-row" key={it.id}>
               <div className="left">
-                <div className="title">{it.title}</div>
-                <div className="meta">₦{it.price.toLocaleString()} · x {it.qty}</div>
+               <div className="title">{it.title}</div>
+<div className="meta">
+  {it.variant && <span>{it.variant}</span>}
+  {it.size && <span> · {it.size}</span>} <br />
+  ₦{it.price.toLocaleString()} · x{it.qty}
+</div>
+
               </div>
               <div className="actions">
                 <button onClick={()=> updateQty(it.id, it.qty-1)} className='qty-btn'>-</button>

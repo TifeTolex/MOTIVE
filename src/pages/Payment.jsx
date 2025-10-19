@@ -3,6 +3,7 @@ import { useCart } from '../store/cart'
 import { useNavigate } from 'react-router-dom'
 import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import { FaRegCopy } from "react-icons/fa6";
 
 
 export default function Payment() {
@@ -82,69 +83,69 @@ export default function Payment() {
       <h2 className="payment-title">Complete Your Order</h2>
 
       {/* ✅ Cart Summary */}
-      <div className="cart-summary">
-        <h3>Your Order Summary</h3>
-        <ul>
-          {cartItems.map((item, i) => (
-            <li key={i} className="summary-item">
-              <img src={item.img} alt={item.name} className="summary-img" />
-              <div className="summary-details">
-                <p className="summary-name">
-                  {item.name || item.title}
-                  {item.qty > 1 && (
-                    <span className="summary-qty"> ({item.qty}×)</span>
-                  )}
-                </p>
-                <small>
-                  {item.variant && (
-                    <>
-                      <span className="variant">{item.variant}</span>
-                      {item.size && (
-                        <>
-                          <span className="summary-separator"> – </span>
-                          <span className="size">Size: {item.size}</span>
-                        </>
-                      )}
-                      <span className="summary-separator"> – </span>
-                    </>
-                  )}
-                  <span className="summary-price">
-                    ₦{(item.price * item.qty).toLocaleString()}
-                  </span>
-                </small>
-              </div>
-            </li>
-          ))}
-        </ul>
-        <h4>Total: ₦{total.toLocaleString()}</h4>
-      </div>
+{/* ✅ Cart Summary */}
+<div className="cart-summary">
+  <h3>Your Order Summary</h3>
+  <ul>
+    {cartItems.map((item, i) => (
+      <li key={i} className="summary-item">
+        {/* ✅ Always show each product's unique image */}
+        <img
+          src={item.img || item.image || item.images?.[0]}
+          alt={item.name || `Product ${i + 1}`}
+          className="summary-img"
+        />
+
+        <div className="summary-details">
+          <p className="summary-name">
+            {item.name || item.title}
+            {item.qty > 1 && (
+              <span className="summary-qty"> ({item.qty}×)</span>
+            )}
+          </p>
+
+          <small>
+            {item.variant && (
+              <>
+                <span className="variant">{item.variant}</span>
+                {item.size && (
+                  <>
+                    <span className="summary-separator"> – </span>
+                    <span className="size">Size: {item.size}</span>
+                  </>
+                )}
+                <span className="summary-separator"> – </span>
+              </>
+            )}
+            <span className="summary-price">
+              ₦{(item.price * item.qty).toLocaleString()}
+            </span>
+          </small>
+        </div>
+      </li>
+    ))}
+  </ul>
+  <h4>Total: ₦{total.toLocaleString()}</h4>
+</div>
+
+
 
       {/* ✅ Payment Instructions */}
       <div className="payment-info">
-        <p>Make your payment to the account below 👇</p>
+        <p >MAKE YOUR PAYMENT TO THE ACCOUNT BELOW 👇</p>
         <div className="account-box">
           <h3>MOTIVE CLOTHING</h3>
           <p>Bank: ACCESS BANK</p>
           <p className="account-number">
             Account Number: <strong>{1655505452}</strong>{' '}
             <button onClick={handleCopyAccount} className="copy-btn">
-              Copy
+              <FaRegCopy size={16} />
             </button>
           </p>
           <p>Account Name: <strong>OLAROGBA TOLUWANI FESTUS</strong></p>
           <p>Total: ₦{total}</p>
 
-          {/* ✅ QR Code for Account */}
-       {/* <div className="qr-code">
-  <QRCodeCanvas
-    value={`BANK: ACCESS BANK | ACCOUNT: ${accountNumber} | NAME: OLAROGBA TOLUWANI FESTUS | AMOUNT: ₦${total}`}
-    size={120}
-    bgColor="#0a0a0a"
-    fgColor="#ffffff"
-    level="Q"
-    includeMargin={true}
-  />
-</div> */}
+
 
         </div>
       </div>

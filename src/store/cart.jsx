@@ -16,13 +16,27 @@ export function CartProvider({ children }) {
     sessionStorage.setItem('motive_cart', JSON.stringify(items))
   }, [items])
 
-  function add(item) {
-    setItems(prev => {
-      const ex = prev.find(p => p.id === item.id)
-      if (ex) return prev.map(p => p.id === item.id ? { ...p, qty: p.qty + (item.qty || 1) } : p)
-      return [...prev, { ...item, qty: item.qty || 1 }]
-    })
-  }
+function add(item) {
+  setItems(prev => {
+    // find an exact match (same product, variant, and size)
+    const ex = prev.find(
+      p => p.id === item.id && p.variant === item.variant && p.size === item.size
+    );
+
+    if (ex) {
+      // if found, just update quantity
+      return prev.map(p =>
+        p.id === item.id && p.variant === item.variant && p.size === item.size
+          ? { ...p, qty: p.qty + (item.qty || 1) }
+          : p
+      );
+    }
+
+    // if not found, add as a new unique entry
+    return [...prev, { ...item, qty: item.qty || 1 }];
+  });
+}
+
 
   function remove(id) {
     setItems(prev => prev.filter(p => p.id !== id))
