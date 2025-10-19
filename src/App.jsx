@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Routes, Route, Link, useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import Home from './pages/Home';
 import Products from './pages/Products';
 import Payment from './pages/Payment';
@@ -12,8 +12,8 @@ import ProductSelector from './components/ProductSelector';
 import { Toaster } from 'react-hot-toast';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import { FaArrowUp } from 'react-icons/fa';
 
+// ✅ Smooth scroll to top when navigating pages
 function ScrollToTop() {
   const { pathname } = useLocation();
   useEffect(() => {
@@ -22,107 +22,83 @@ function ScrollToTop() {
   return null;
 }
 
-// ✅ Floating Scroll Button (movable + saves position)
-function FloatingScrollButton() {
-  const [visible, setVisible] = useState(false);
+// ✅ Movable Floating Gallery Button
+function MovableGalleryButton() {
+  const navigate = useNavigate();
+
+  // Load saved position or set default
   const [position, setPosition] = useState(() => {
-    const saved = localStorage.getItem('floatingBtnPos');
-    return saved
-      ? JSON.parse(saved)
-      : { x: window.innerWidth - 80, y: 100 };
+    const saved = localStorage.getItem('galleryBtnPos');
+    return saved ? JSON.parse(saved) : { x: window.innerWidth - 80, y: window.innerHeight - 120 };
   });
 
   const [dragging, setDragging] = useState(false);
   const [offset, setOffset] = useState({ x: 0, y: 0 });
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setVisible(window.scrollY > 200);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
   const startDrag = (e) => {
     e.preventDefault();
     setDragging(true);
-    setOffset({ x: e.clientX - position.x, y: e.clientY - position.y });
-  };
-
-  const startTouch = (e) => {
-    setDragging(true);
-    const touch = e.touches[0];
-    setOffset({ x: touch.clientX - position.x, y: touch.clientY - position.y });
-  };
-
-  const moveDrag = (clientX, clientY) => {
-    const newPos = {
-      x: Math.max(20, Math.min(clientX - offset.x, window.innerWidth - 60)),
-      y: Math.max(20, Math.min(clientY - offset.y, window.innerHeight - 60)),
-    };
-    setPosition(newPos);
+    const clientX = e.clientX || e.touches?.[0]?.clientX;
+    const clientY = e.clientY || e.touches?.[0]?.clientY;
+    setOffset({ x: clientX - position.x, y: clientY - position.y });
   };
 
   const duringDrag = (e) => {
     if (!dragging) return;
-    moveDrag(e.clientX, e.clientY);
-  };
-
-  const duringTouchDrag = (e) => {
-    if (!dragging) return;
-    const touch = e.touches[0];
-    moveDrag(touch.clientX, touch.clientY);
+    const clientX = e.clientX || e.touches?.[0]?.clientX;
+    const clientY = e.clientY || e.touches?.[0]?.clientY;
+    const newPos = {
+      x: Math.max(10, Math.min(clientX - offset.x, window.innerWidth - 60)),
+      y: Math.max(10, Math.min(clientY - offset.y, window.innerHeight - 60)),
+    };
+    setPosition(newPos);
   };
 
   const stopDrag = () => {
     setDragging(false);
-    localStorage.setItem('floatingBtnPos', JSON.stringify(position));
+    localStorage.setItem('galleryBtnPos', JSON.stringify(position));
   };
 
   useEffect(() => {
     window.addEventListener('mousemove', duringDrag);
     window.addEventListener('mouseup', stopDrag);
-    window.addEventListener('touchmove', duringTouchDrag);
+    window.addEventListener('touchmove', duringDrag);
     window.addEventListener('touchend', stopDrag);
     return () => {
       window.removeEventListener('mousemove', duringDrag);
       window.removeEventListener('mouseup', stopDrag);
-      window.removeEventListener('touchmove', duringTouchDrag);
+      window.removeEventListener('touchmove', duringDrag);
       window.removeEventListener('touchend', stopDrag);
     };
-  }, [dragging, offset, position]);
-
-  if (!visible) return null;
+  });
 
   return (
     <button
+    className='floating-gallery-btn '
       onMouseDown={startDrag}
-      onTouchStart={startTouch}
-      onClick={scrollToTop}
+      onTouchStart={startDrag}
+      onClick={() => navigate('/gallery')}
       style={{
         position: 'fixed',
         left: `${position.x}px`,
-        bottom: `${position.y}px`,
+        top: `${position.y}px`, // ✅ fixed: use top instead of bottom
         zIndex: 1000,
-        background: '#000',
-        color: '#fff',
+        background: '',
+        color: '#000',
         border: 'none',
         borderRadius: '50%',
-        width: '45px',
-        height: '45px',
+        width: '50px',
+        height: '50px',
         cursor: dragging ? 'grabbing' : 'grab',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        boxShadow: '0 4px 10px rgba(0,0,0,0.3)',
+        fontSize: '1.3rem',
+        boxShadow: '0 4px 10px #2ec4ff',
         transition: dragging ? 'none' : '0.2s ease',
       }}
     >
-      <FaArrowUp size={18} />
+      ✨
     </button>
   );
 }
@@ -166,10 +142,7 @@ export default function App() {
 
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route
-            path="/products"
-            element={<Products onSelectProduct={handleSelectProduct} />}
-          />
+          <Route path="/products" element={<Products onSelectProduct={handleSelectProduct} />} />
           <Route path="/payment" element={<Payment />} />
           <Route path="/gallery" element={<Gallery />} />
         </Routes>
@@ -177,18 +150,11 @@ export default function App() {
         <Footer />
       </div>
 
-      {/* Floating Gallery Button */}
-      <Link to="/gallery" className="floating-gallery-btn">
-        ✨
-      </Link>
+      {/* ✅ Movable Gallery Button */}
+      <MovableGalleryButton />
 
-      {/* ✅ Floating Scroll Button */}
-      <FloatingScrollButton />
-
-      {/* ✅ Product Selector */}
-      {showSelector && (
-        <ProductSelector product={selectedProduct} onClose={closeSelector} />
-      )}
+      {/* ✅ Product Selector Modal */}
+      {showSelector && <ProductSelector product={selectedProduct} onClose={closeSelector} />}
 
       {/* ✅ Toast Notifications */}
       <Toaster
@@ -205,18 +171,8 @@ export default function App() {
             border: '1px solid #222',
             boxShadow: '0 4px 14px rgba(0,0,0,0.4)',
           },
-          success: {
-            iconTheme: {
-              primary: '#22c55e',
-              secondary: '#fff',
-            },
-          },
-          error: {
-            iconTheme: {
-              primary: '#ef4444',
-              secondary: '#fff',
-            },
-          },
+          success: { iconTheme: { primary: '#22c55e', secondary: '#fff' } },
+          error: { iconTheme: { primary: '#ef4444', secondary: '#fff' } },
         }}
       />
     </CartProvider>
