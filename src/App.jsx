@@ -29,7 +29,9 @@ function MovableGalleryButton() {
   // Load saved position or set default
   const [position, setPosition] = useState(() => {
     const saved = localStorage.getItem('galleryBtnPos');
-    return saved ? JSON.parse(saved) : { x: window.innerWidth - 80, y: window.innerHeight - 120 };
+    return saved
+      ? JSON.parse(saved)
+      : { x: window.innerWidth - 80, y: window.innerHeight - 120 };
   });
 
   const [dragging, setDragging] = useState(false);
@@ -40,7 +42,10 @@ function MovableGalleryButton() {
     setDragging(true);
     const clientX = e.clientX || e.touches?.[0]?.clientX;
     const clientY = e.clientY || e.touches?.[0]?.clientY;
-    setOffset({ x: clientX - position.x, y: clientY - position.y });
+    setOffset({
+      x: clientX - position.x,
+      y: clientY - position.y + window.scrollY,
+    });
   };
 
   const duringDrag = (e) => {
@@ -49,7 +54,10 @@ function MovableGalleryButton() {
     const clientY = e.clientY || e.touches?.[0]?.clientY;
     const newPos = {
       x: Math.max(10, Math.min(clientX - offset.x, window.innerWidth - 60)),
-      y: Math.max(10, Math.min(clientY - offset.y, window.innerHeight - 60)),
+      y: Math.max(
+        10,
+        Math.min(clientY - offset.y + window.scrollY, window.innerHeight - 60 + window.scrollY)
+      ),
     };
     setPosition(newPos);
   };
@@ -74,27 +82,27 @@ function MovableGalleryButton() {
 
   return (
     <button
-    className='floating-gallery-btn '
       onMouseDown={startDrag}
       onTouchStart={startDrag}
       onClick={() => navigate('/gallery')}
       style={{
         position: 'fixed',
         left: `${position.x}px`,
-        top: `${position.y}px`, // ✅ fixed: use top instead of bottom
+        top: `${position.y - window.scrollY}px`, // keeps fixed on scroll
         zIndex: 1000,
-        background: '',
-        color: '#000',
+        background: dragging ? '#111' : '#000',
+        color: '#fff',
         border: 'none',
         borderRadius: '50%',
         width: '50px',
         height: '50px',
+        opacity: dragging ? 0.7 : 1, // ✅ transparent while dragging
         cursor: dragging ? 'grabbing' : 'grab',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
         fontSize: '1.3rem',
-        boxShadow: '0 4px 10px #2ec4ff',
+        boxShadow: '0 4px 10px rgba(0,0,0,0.3)',
         transition: dragging ? 'none' : '0.2s ease',
       }}
     >
@@ -102,6 +110,7 @@ function MovableGalleryButton() {
     </button>
   );
 }
+
 
 export default function App() {
   const [showSplash, setShowSplash] = useState(true);
