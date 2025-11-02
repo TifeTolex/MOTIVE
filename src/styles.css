@@ -960,13 +960,14 @@ body.modal-open {
   display: flex;
   align-items: center;
   gap: 8px;
+  
 }
 
-.old-price {
+/* .old-price {
   text-decoration: line-through;
   color: #888;
   font-size: 0.9rem;
-}
+} */
 
 .new-price {
   color: var(--neon);
