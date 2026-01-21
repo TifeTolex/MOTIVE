@@ -137,8 +137,7 @@ body.modal-open {
   position: relative;
   overflow: hidden;
   border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-  background: linear-gradient(180deg, rgba(0,0,0,0.7), rgba(0,0,0,0.85)),
-              url('../assets/images/hero-bg-mobile.png') center/cover no-repeat;
+
   /* background: #000;
   background: linear-gradient(180deg, rgba(0,0,0,0.7), rgba(0,0,0,0.85)),
               url('/src/assets/hero-bg.png') center/cover no-repeat; */
@@ -147,14 +146,14 @@ body.modal-open {
 
 @media (max-width: 1024px) {
   .hero {
-    background-image: url('/images/hero-bg-mobile.png');
+    /* background-image: url('/images/hero-bg-mobile.png'); */
   }
 }
 
 @media (max-width: 768px) {
   .hero {
-   background: linear-gradient(180deg, rgba(0,0,0,0.7), rgba(0,0,0,0.85)),
-              url('/images/hero-bg-mobile.png') center/cover no-repeat;
+   /* background: linear-gradient(180deg, rgba(0,0,0,0.7), rgba(0,0,0,0.85)),
+              url('/images/hero-bg-mobile.png') center/cover no-repeat; */
 }
 }
 
@@ -163,7 +162,7 @@ body.modal-open {
   content: "";
   position: absolute;
   inset: 0;
-  background: url('/images/hero-bg-mobile.png') center/cover no-repeat;
+  /* background: url('/images/hero-bg-mobile.png') center/cover no-repeat; */
   /* opacity: 0.25; */
   z-index: 0;
 }
@@ -1425,4 +1424,247 @@ body.modal-open {
   height: 50px;
   object-fit: cover;
   border-radius: 8px;
+}
+
+
+/* Glowing 3 circles */
+.glow-dots {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin: 40px 0 25px;
+}
+
+.glow-dots span {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.8),
+              0 0 20px rgba(255, 255, 255, 0.6);
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+.glow-dots span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.glow-dots span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.4); }
+  100% { opacity: 0.4; transform: scale(1); }
+}
+
+/* Order button */
+.new-order-btn-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.new-order-btn {
+  padding: 14px 36px;
+  background: #000;
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: 1px;
+  border-radius: 40px;
+  text-decoration: none;
+  border: 2px solid #fff;
+  transition: all 0.3s ease;
+}
+
+.new-order-btn:hover {
+  background: #fff;
+  color: #000;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+}
+
+/* .noise-layer {
+  position: absolute;
+  inset: 0;
+  background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+  opacity: 0.05;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.motive-outline {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.motive-outline span {
+  font-size: clamp(6rem, 18vw, 14rem);
+  font-weight: 900;
+  letter-spacing: 0.2em;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.6);
+  text-shadow:
+    0 0 15px rgba(255, 255, 255, 0.4),
+    0 0 40px rgba(255, 255, 255, 0.15);
+  animation: motiveGlow 6s ease-in-out infinite;
+}
+
+@keyframes motiveGlow {
+  0% {
+    opacity: 0;
+    filter: blur(2px);
+  }
+  30% {
+    opacity: 0.7;
+    filter: blur(0);
+  }
+  60% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 0;
+    filter: blur(3px);
+  }
+}
+
+.hero {
+  position: relative;
+  min-height: 90vh;
+  background: #000;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+
+  
+} */
+
+.hero {
+  position: relative;
+  min-height: 90vh;
+  background: #000;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.noise-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.06;
+
+  background-image:
+    repeating-radial-gradient(
+      circle at 0 0,
+      rgba(255,255,255,0.15),
+      rgba(255,255,255,0.15) 1px,
+      transparent 1px,
+      transparent 2px
+    );
+  animation: noiseMove 1.2s steps(2) infinite;
+}
+
+
+@keyframes noiseMove {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(-1%, 1%); }
+  50% { transform: translate(1%, -1%); }
+  75% { transform: translate(-1%, -1%); }
+  100% { transform: translate(0, 0); }
+}
+
+.motive-spell {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.3em;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.motive-spell .word {
+  display: flex;
+  gap: 0.25em;
+}
+.motive-spell span {
+  font-size: clamp(7rem, 20vw, 16rem);
+  font-weight: 900;
+  color: transparent;
+  -webkit-text-stroke: 1.2px rgba(255,255,255,0.7);
+  text-shadow:
+    0 0 14px rgba(255,255,255,0.4),
+    0 0 45px rgba(255,255,255,0.15);
+  opacity: 0;
+  transform: translateX(-40px) translateY(20px);
+  animation: motiveSpell 8s ease-in-out infinite;
+  animation-delay: calc(var(--i) * 0.3s);
+}
+@keyframes motiveSpell {
+  0% {
+    opacity: 0;
+    transform: translateX(-60px) translateY(30px);
+    filter: blur(4px);
+  }
+
+  20% {
+    opacity: 1;
+    transform: translateX(0) translateY(0);
+    filter: blur(0);
+  }
+
+  50% {
+    opacity: 0.6;
+    transform: translateX(20px);
+  }
+
+  80% {
+    opacity: 0;
+    transform: translateX(60px) translateY(-20px);
+    filter: blur(5px);
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+.motive-morph {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: rgba(255,255,255,0.7);
+  opacity: 0;
+  z-index: 0;
+  animation: morphText 8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes morphText {
+  0%, 60% { opacity: 0; }
+  70% { opacity: 0.6; }
+  90% { opacity: 0; }
+}
+
+.motive-spell span {
+  text-shadow:
+    0 0 20px rgba(255,255,255,0.5),
+    calc((var(--x, 0px) - 50vw) / 40)
+    calc((var(--y, 0px) - 50vh) / 40)
+    60px rgba(255,255,255,0.2);
 }
