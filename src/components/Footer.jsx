@@ -1,5 +1,5 @@
 import React from "react";
-import { FaXTwitter, FaTiktok } from "react-icons/fa6"; // ✅ Updated icon import
+import { FaXTwitter, FaTiktok, FaInstagram } from "react-icons/fa6"; // ✅ Updated icon import
 
 export default function Footer() {
   return (
@@ -30,6 +30,15 @@ export default function Footer() {
             className="social-icon tiktok"
           >
             <FaTiktok />
+          </a>
+
+          <a
+            href="https://www.tiktok.com/@motive_brands?_t=ZS-90R12PXYzsV&_r=1e"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="social-icon instagram"
+          >
+            <FaInstagram />
           </a>
         </div>
 

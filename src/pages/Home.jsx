@@ -57,8 +57,8 @@ export default function Home() {
           COLLECTIONS
         </h2>
         <div className="collections" data-aos="zoom-in" data-aos-delay="300">
-          <div className="col">Driven Drops</div>
-          <div className="col">Urban</div>
+          <div className="col">Alpha Drop</div>
+          <div className="col"> New wave</div>
           <div className="col">Street Made</div>
         </div>
       </section>

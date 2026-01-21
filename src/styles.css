@@ -1059,6 +1059,7 @@ body.modal-open {
   color: #ccc;
 }
 
+
 .thumb img {
   min-width:100%;
   border-radius: 15px;
@@ -1176,14 +1177,19 @@ body.modal-open {
 }
 
 /* Platform-specific glow accents */
-.social-icon.twitter:hover {
+.social-icon.x:hover {
   color: #1DA1F2;
   filter: drop-shadow(0 0 10px rgba(29, 161, 242, 0.6));
 }
 
 .social-icon.tiktok:hover {
-  color: #ff0050;
+  color: blue;
   filter: drop-shadow(0 0 10px rgba(255, 0, 80, 0.6));
+}
+
+.social-icon.instagram:hover {
+  color: #ff0050;
+  filter: drop-shadow(0 0 10px rgba(29, 161, 242, 0.6));
 }
 
 @keyframes pulse {
