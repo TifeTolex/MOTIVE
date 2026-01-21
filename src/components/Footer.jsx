@@ -33,7 +33,7 @@ export default function Footer() {
           </a>
 
           <a
-            href="https://www.tiktok.com/@motive_brands?_t=ZS-90R12PXYzsV&_r=1e"
+            href="https://www.instagram.com/motive.brands?igsh=emQ3bmtsdzR0dHBi"
             target="_blank"
             rel="noopener noreferrer"
             className="social-icon instagram"
