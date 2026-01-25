@@ -3,12 +3,12 @@ import ProductCard from '../components/ProductCard';
 import ProductSelector from '../components/ProductSelector';
 
 const PRODUCTS = [
-  { id: 1, title: 'Motive Tee', price: 13000, priceOld: 15000, img: '/images/mv-new.png', comingSoon: false },
-  { id: 2, title: 'Motive Armless Top', price: 10000, priceOld: 10000, img: '/images/motive armless top.png', comingSoon: false },
-  { id: 4, title: 'Motive Tank Top', price: 13000, priceOld : 13000, img: '/images/motive tank top.png', comingSoon: false },
-  { id: 3, title: 'Motive Cap', price: 10000, priceOld: 10000, img: 'images/motive cap.png', comingSoon: false },
-  { id: 4, title: 'Motive Trucker Cap', price: 6000, priceOld: 6000,  img: '/images/motive trucker cap.png', comingSoon: false },
-  { id: 4, title: 'Motive Joggers', price: 15000, priceOld: 15000, img: '/images/new3.png', comingSoon: true },
+  { id: 1, title: 'Motive Tee', price: 15000,  img: '/images/mv-new.png',type: 'shirt' , comingSoon: false },
+  { id: 2, title: 'Motive Tank Top', price: 10000, priceOld: 8000, img: '/images/motive armless top.png',  type: 'accessory' , comingSoon: false },
+  { id: 4, title: 'Motive Sleeveless', price: 13000, priceOld : 11000, img: '/images/motive tank top.png', type: 'accessory'  , comingSoon: false },
+  { id: 3, title: 'Motive Face Cap', price: 10000, priceOld: 8500, img: 'images/motive cap.png', type: 'accessory' , comingSoon: false },
+  { id: 4, title: 'Motive Trucker Cap', price: 6000, priceOld: 5000,  img: '/images/motive trucker cap.png', type: 'accessory' , comingSoon: false },
+  { id: 4, title: 'Motive Joggers', price: 15000, priceOld: 15000, img: '/images/new3.png',type: 'accessory' , comingSoon: true },
 ];
 
 export default function Products() {

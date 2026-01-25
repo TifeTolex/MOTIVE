@@ -2,14 +2,28 @@ import React, { useState } from 'react';
 import { useCart } from '../store/cart';
 import Portal from './Portal';
 import ProductSelector from './ProductSelector';
+import toast from 'react-hot-toast';
 
 export default function ProductCard({ product }) {
   const { add } = useCart();
   const [showSelector, setShowSelector] = useState(false);
 
   const handleSelect = () => {
-    if (!product.comingSoon) setShowSelector(true);
-    document.body.style.overflow = 'hidden';
+    if (product.comingSoon) return;
+
+    // ✅ Only shirts open selector
+    if (product.type === 'shirt') {
+      setShowSelector(true);
+      document.body.style.overflow = 'hidden';
+    } else {
+      // ✅ Other products go straight to cart
+      add({
+        ...product,
+        qty: 1,
+      });
+
+      toast.success(`${product.title} added to cart!`);
+    }
   };
 
   const handleClose = () => {
@@ -31,8 +45,12 @@ export default function ProductCard({ product }) {
             <div className="price">
               {product.priceOld ? (
                 <>
-                  <span className="new-price">₦{product.priceOld.toLocaleString()}</span>
-                  {/* <span className="new-price">₦{product.price.toLocaleString()}</span> */}
+                  <span className="new-price">
+                    ₦{product.priceOld.toLocaleString()}
+                  </span>
+                  <span className="old-price">
+                    ₦{product.price.toLocaleString()}
+                  </span>
                 </>
               ) : (
                 <>₦{product.price.toLocaleString()}</>
@@ -42,7 +60,7 @@ export default function ProductCard({ product }) {
 
           {!product.comingSoon && (
             <button onClick={handleSelect} className="add">
-              Select
+              {product.type === 'shirt' ? 'Select' : 'Add to Cart'}
             </button>
           )}
         </div>
@@ -52,8 +70,8 @@ export default function ProductCard({ product }) {
         )}
       </div>
 
-      {/* ✅ Smooth Modal using Portal */}
-      {showSelector && (
+      {/* ✅ Modal only for shirts */}
+      {showSelector && product.type === 'shirt' && (
         <Portal>
           <div className="modal-overlay" onClick={handleClose}>
             <div

@@ -67,7 +67,7 @@ export default function Payment() {
   }
 
   // ✅ Copy Account Number
-  const accountNumber = '1655505452'
+  const accountNumber = '7014847975'
   const handleCopyAccount = () => {
     navigator.clipboard.writeText(accountNumber)
     toast.success('Account number copied 📋', {
@@ -135,9 +135,9 @@ export default function Payment() {
         <p >MAKE YOUR PAYMENT TO THE ACCOUNT BELOW 👇</p>
         <div className="account-box">
           <h3>MOTIVE CLOTHING</h3>
-          <p>Bank: ACCESS BANK</p>
+          <p>Bank: MONIEPOINT MFB </p>
           <p className="account-number">
-            Account Number: <strong>{1655505452}</strong>{' '}
+            Account Number: <strong>{7014847975}</strong>{' '}
             <button onClick={handleCopyAccount} className="copy-btn">
               <FaRegCopy size={16} />
             </button>

@@ -14,6 +14,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { FaArrowUp } from 'react-icons/fa';
 
+
 function ScrollToTop() {
   const { pathname } = useLocation();
   useEffect(() => {

@@ -236,7 +236,7 @@ body.modal-open {
   box-shadow: 0 0 35px rgba(46, 196, 255, 0.4);
 }
 
-.hero-right {
+.-right {
   display: none;
   flex: 1;
   height: 420px;
@@ -962,11 +962,11 @@ body.modal-open {
   
 }
 
-/* .old-price {
+.old-price {
   text-decoration: line-through;
   color: #888;
   font-size: 0.9rem;
-} */
+}
 
 .new-price {
   color: var(--neon);
@@ -1548,11 +1548,12 @@ body.modal-open {
 
 .hero {
   position: relative;
-  min-height: 90vh;
+  min-height: 65vh;
   background: #000;
   overflow: hidden;
   display: flex;
   align-items: center;
+   background: url('/images/hero-bg-mobile.png') center/cover no-repeat;
 }
 
 .noise-layer {
@@ -1570,6 +1571,7 @@ body.modal-open {
       transparent 1px,
       transparent 2px
     );
+    
   animation: noiseMove 1.2s steps(2) infinite;
 }
 
@@ -1585,7 +1587,7 @@ body.modal-open {
 .motive-spell {
   position: absolute;
   inset: 0;
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -1608,8 +1610,8 @@ body.modal-open {
     0 0 45px rgba(255,255,255,0.15);
   opacity: 0;
   transform: translateX(-40px) translateY(20px);
-  animation: motiveSpell 8s ease-in-out infinite;
-  animation-delay: calc(var(--i) * 0.3s);
+  animation: motiveSpell 5s ease-in-out infinite;
+  animation-delay: calc(var(--i) * 0.1s);
 }
 @keyframes motiveSpell {
   0% {
@@ -1639,7 +1641,7 @@ body.modal-open {
     opacity: 0;
   }
 }
-.motive-morph {
+/* .motive-morph {
   position: absolute;
   inset: 0;
   display: flex;
@@ -1653,13 +1655,13 @@ body.modal-open {
   z-index: 0;
   animation: morphText 8s ease-in-out infinite;
   pointer-events: none;
-}
+} */
 
-@keyframes morphText {
+/* @keyframes morphText {
   0%, 60% { opacity: 0; }
   70% { opacity: 0.6; }
   90% { opacity: 0; }
-}
+} */
 
 .motive-spell span {
   text-shadow:
@@ -1668,3 +1670,5 @@ body.modal-open {
     calc((var(--y, 0px) - 50vh) / 40)
     60px rgba(255,255,255,0.2);
 }
+
+

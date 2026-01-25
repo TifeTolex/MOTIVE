@@ -58,7 +58,7 @@ export default function Home() {
   </div>
 
   {/* Morph text */}
-  <div className="motive-morph"></div>
+  {/* <div className="motive-morph"></div> */}
 
   <div className="hero-left">
     <h1 className="hero-title">STYLE IN MOTION</h1>
@@ -95,6 +95,7 @@ export default function Home() {
       </section> */}
 
      {/* NEW ARRIVALS */}
+     
 <section
   id="new"
   className="section"
@@ -104,6 +105,8 @@ export default function Home() {
   <h2 className="section-title" data-aos="fade-up" data-aos-delay="100">
     NEW ARRIVALS
   </h2>
+
+  
 
   <div className="products-grid" data-aos="fade-up" data-aos-delay="200">
     {PRODUCTS.map((p) => (
