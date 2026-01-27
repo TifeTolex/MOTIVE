@@ -118,7 +118,7 @@ export default function Payment() {
               </>
             )}
             <span className="summary-price">
-              ₦{(item.price * item.qty).toLocaleString()}
+              ₦{(item.priceOld * item.qty).toLocaleString()}
             </span>
           </small>
         </div>

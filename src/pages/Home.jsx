@@ -5,9 +5,9 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 const PRODUCTS = [
-  { id: 2, title: 'Motive Armless Top', price: 10000, priceOld: 10000, img: '/images/motive armless top.png', comingSoon: false },
-  { id: 4, title: 'Motive Tank Top', price: 13000, priceOld : 13000, img: '/images/motive tank top.png', comingSoon: false },
-  { id: 3, title: 'Motive Cap', price: 10000, priceOld: 10000, img: 'images/motive cap.png', comingSoon: false },
+   { id: 2, title: 'Motive Tank Top', price: 10000, priceOld: 8000, img: '/images/motive armless top.png',  type: 'accessory' , comingSoon: false },
+  { id: 4, title: 'Motive Sleeveless', price: 13000, priceOld : 11000, img: '/images/motive tank top.png', type: 'accessory'  , comingSoon: false },
+  { id: 3, title: 'Motive Face Cap', price: 10000, priceOld: 8500, img: 'images/motive cap.png', type: 'accessory' , comingSoon: false },
 ];
 
 export default function Home() {
