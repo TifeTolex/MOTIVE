@@ -46,10 +46,10 @@ export default function ProductCard({ product }) {
               {product.priceOld ? (
                 <>
                   <span className="new-price">
-                    ₦{product.priceOld.toLocaleString()}
+                    ₦{product.price.toLocaleString()}
                   </span>
                   <span className="old-price">
-                    ₦{product.price.toLocaleString()}
+                    ₦{product.priceOld.toLocaleString()}
                   </span>
                 </>
               ) : (
