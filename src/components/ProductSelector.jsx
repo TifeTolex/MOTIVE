@@ -9,8 +9,10 @@ import blackImg from '../assets/images/motive-black-variant.png';
 
 export default function ProductSelector({ product, onClose }) {
   const { add } = useCart();
+
   const [selected, setSelected] = useState(null);
   const [size, setSize] = useState('');
+  const [color, setColor] = useState('');
 
   // ✅ Disable background scroll while modal is open
   useEffect(() => {
@@ -30,14 +32,27 @@ export default function ProductSelector({ product, onClose }) {
   // ✅ Sizes
   const SIZES = ['S', 'M', 'L', 'XL', '2XL'];
 
+  // ✅ Colors (fallback if product.colors not provided)
+  const COLORS = product.colors || [
+    { name: 'Black', hex: '#000000' },
+    { name: 'White', hex: '#FFFFFF' },
+    { name: 'Brown', hex: '#6F4E37' },
+  ];
+
   // ✅ Confirm selection and add to cart
   const handleConfirm = () => {
     if (!selected) {
       toast.error('Please select a shirt type.');
       return;
     }
+
     if (!size) {
       toast.error('Please select a size.');
+      return;
+    }
+
+    if (!color) {
+      toast.error('Please select a color.');
       return;
     }
 
@@ -45,11 +60,12 @@ export default function ProductSelector({ product, onClose }) {
       ...product,
       variant: selected.name,
       size,
+      color,
       img: selected.img,
       qty: 1,
     });
 
-    toast.success(`${selected.name} (${size}) added to cart!`);
+    toast.success(`${selected.name} (${size}, ${color}) added to cart!`);
     onClose();
   };
 
@@ -57,19 +73,27 @@ export default function ProductSelector({ product, onClose }) {
     <div className="selector-overlay" onClick={onClose}>
       <div
         className="selector-modal"
-        onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside
+        onClick={(e) => e.stopPropagation()}
       >
-        <h3 className="selector-title">Select your {product.title}</h3>
+        <h3 className="selector-title">
+          Select your {product.title}
+        </h3>
 
         {/* ✅ Variant Options */}
         <div className="options">
           {OPTIONS.map((opt) => (
             <div
               key={opt.id}
-              className={`option ${selected?.id === opt.id ? 'active' : ''}`}
+              className={`option ${
+                selected?.id === opt.id ? 'active' : ''
+              }`}
               onClick={() => setSelected(opt)}
             >
-              <img src={opt.img} alt={opt.name} className="option-img" />
+              <img
+                src={opt.img}
+                alt={opt.name}
+                className="option-img"
+              />
               <span className="option-name">{opt.name}</span>
             </div>
           ))}
@@ -82,7 +106,9 @@ export default function ProductSelector({ product, onClose }) {
             {SIZES.map((s) => (
               <button
                 key={s}
-                className={`size-btn ${size === s ? 'active' : ''}`}
+                className={`size-btn ${
+                  size === s ? 'active' : ''
+                }`}
                 onClick={() => setSize(s)}
               >
                 {s}
@@ -91,12 +117,36 @@ export default function ProductSelector({ product, onClose }) {
           </div>
         </div>
 
+        {/* ✅ Color Options */}
+        <div className="color-section">
+          <p>Select Color:</p>
+          <div className="color-options">
+            {COLORS.map((c) => (
+              <button
+                key={c.name}
+                className={`color-btn ${
+                  color === c.name ? 'active' : ''
+                }`}
+                onClick={() => setColor(c.name)}
+                title={c.name}
+                style={{ backgroundColor: c.hex }}
+              />
+            ))}
+          </div>
+        </div>
+
         {/* ✅ Action Buttons */}
         <div className="actions">
-          <button className="close-btn" onClick={onClose}>
+          <button
+            className="close-btn"
+            onClick={onClose}
+          >
             Cancel
           </button>
-          <button className="confirm-btn" onClick={handleConfirm}>
+          <button
+            className="confirm-btn"
+            onClick={handleConfirm}
+          >
             Add to Cart
           </button>
         </div>

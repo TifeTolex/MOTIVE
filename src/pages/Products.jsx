@@ -6,7 +6,8 @@ const PRODUCTS = [
   { id: 1, title: 'Motive Tee', price: 15000,  img: '/images/mv-new.png',type: 'shirt' , comingSoon: false },
   { id: 2, title: 'Motive Tank Top', price: 10000,  img: '/images/motive armless top.png',  type: 'accessory' , comingSoon: false },
   { id: 4, title: 'Motive Sleeveless', price: 13000,  img: '/images/motive tank top.png', type: 'accessory'  , comingSoon: false },
-  { id: 3, title: 'Motive Face Cap', price: 10000,  img: 'images/motive cap.png', type: 'accessory' , comingSoon: false },
+  { id: 3, title: 'Motive snapback', price: 10000,  img: 'images/motive cap.png', type: 'accessory' , comingSoon: false },
+   { id: 3, title: 'Motive Face Cap', price: 8000,  img: 'images/motive face cap.png', type: 'accessory' , comingSoon: false },
   { id: 4, title: 'Motive Trucker Cap', price: 6000,   img: '/images/motive trucker cap.png', type: 'accessory' , comingSoon: false },
   { id: 4, title: 'Motive Joggers', price: 15000,  img: '/images/new3.png',type: 'accessory' , comingSoon: true },
 ];
@@ -16,7 +17,10 @@ export default function Products() {
 
   return (
     <main className="products-page">
-      <h2 className='new-h2'>Select items</h2>
+      <h2 className='new-h2'>Select items
+         <p> **Products are available in all color**</p>
+      </h2>
+     
 
       <div className="products-grid">
         {PRODUCTS.map((p) => (
