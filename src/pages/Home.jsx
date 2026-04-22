@@ -7,7 +7,7 @@ import 'aos/dist/aos.css';
 const PRODUCTS = [
   { id: 2, title: 'Motive Tank Top', price: 10000,  img: '/images/motive armless top.png',  type: 'accessory' , comingSoon: false },
   { id: 4, title: 'Motive Sleeveless', price: 13000,  img: '/images/motive tank top.png', type: 'accessory'  , comingSoon: false },
-  { id: 3, title: 'Motive Face Cap', price: 10000,  img: 'images/motive cap.png', type: 'accessory' , comingSoon: false },
+  { id: 3, title: 'Motive snapback', price: 10000,  img: 'images/motive cap.png', type: 'accessory' , comingSoon: false },
 ];
 
 export default function Home() {

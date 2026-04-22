@@ -18,7 +18,7 @@ export default function Products() {
   return (
     <main className="products-page">
       <h2 className='new-h2'>Select items
-         <p> **Products are available in all color**</p>
+         <p> **Products are available in all colors**</p>
       </h2>
      
 

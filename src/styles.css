@@ -325,6 +325,10 @@ body.modal-open {
  .new-h2{
   padding-left: 1.5rem;
 }
+p {
+  font-size: 12px;
+  color: #00ffff;
+}
 
 /* collections */
 .collections {
