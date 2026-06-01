@@ -11,7 +11,7 @@ const PRODUCTS = [
   { id: 4, title: 'Motive Trucker Cap', price: 6000,   img: '/images/motive trucker cap.png', type: 'accessory' , comingSoon: false },
    { id: 2, title: 'Motive Sleeve shirt', price: 12000,  img: '/images/mot 1.png',  type: 'accessory' , comingSoon: false },
   { id: 4, title: 'Motive  Joggers', price: 13000,  img: '/images/mot 3.png', type: 'accessory'  , comingSoon: false },
-  { id: 4, title: 'Motive -Beta pair', price: 13000,  img: '/images/mot 2.png', type: 'accessory'  , comingSoon: false },
+  { id: 4, title: 'Motive  Beta pair', price: 23000,  img: '/images/mot 2.png', type: 'accessory'  , comingSoon: false },
 ];
 
 export default function Products() {
