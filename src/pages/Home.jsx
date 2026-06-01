@@ -7,7 +7,7 @@ import 'aos/dist/aos.css';
 const PRODUCTS = [
   { id: 2, title: 'Motive Sleeve shirt', price: 12000,  img: '/images/mot 1.png',  type: 'accessory' , comingSoon: false },
   { id: 4, title: 'Motive  Joggers', price: 13000,  img: '/images/mot 3.png', type: 'accessory'  , comingSoon: false },
-  { id: 4, title: 'Motive  Joggers', price: 13000,  img: '/images/mot 2.png', type: 'accessory'  , comingSoon: false },
+  { id: 4, title: 'Motive  beta pair', price: 13000,  img: '/images/mot 2.png', type: 'accessory'  , comingSoon: false },
   { id: 3, title: 'Motive Basic top', price: 7500,  img: 'images/basic-', type: 'accessory' , comingSoon: true },
 ];
 
