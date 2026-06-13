@@ -971,6 +971,7 @@ p {
 }
 
 .old-price {
+  display: none;
   text-decoration: line-through;
   color: #888;
   font-size: 0.9rem;
