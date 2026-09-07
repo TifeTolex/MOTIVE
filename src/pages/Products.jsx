@@ -12,6 +12,7 @@ const PRODUCTS = [
   { id: 2, title: 'Motive Sleeve shirt', price: 15000,  img: '/images/mot 1.png',  type: 'accessory' , comingSoon: false },
   { id: 4, title: 'Motive  Joggers', price: 15000,  img: '/images/mot 3.png', type: 'accessory'  , comingSoon: false },
   { id: 4, title: 'Motive  Beta pair', price: 28000,  img: '/images/mot 2.png', type: 'accessory'  , comingSoon: false },
+  { id: 4, title: 'Motive  Beta-Go', price: 8000,  img: '/images/Go-series.png', type: 'accessory'  , comingSoon: false },
 ];
 
 export default function Products() {
