@@ -13,6 +13,10 @@ const PRODUCTS = [
   { id: 4, title: 'Motive  Joggers', price: 15000,  img: '/images/mot 3.png', type: 'accessory'  , comingSoon: false },
   { id: 4, title: 'Motive  Beta pair', price: 28000,  img: '/images/mot 2.png', type: 'accessory'  , comingSoon: false },
   { id: 4, title: 'Motive  Beta-Go', price: 8000,  img: '/images/Go-series.png', type: 'accessory'  , comingSoon: false },
+  { id: 4, title: 'Motive long sleeve', price: 15000,  img: '/images/longsleeve.png', type: 'accessory'  , comingSoon: true },
+  { id: 4, title: 'Motive  Hoodie', price: 28000,  img: '/images/hoodie.png', type: 'accessory'  , comingSoon: true },
+  { id: 4, title: 'Motive  Joggers', price: 8000,  img: '/images/new-joggers.jpg', type: 'accessory'  , comingSoon: true },
+
 ];
 
 export default function Products() {
