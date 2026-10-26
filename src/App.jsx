@@ -3,7 +3,7 @@ import { Routes, Route, Link, useLocation } from 'react-router-dom';
 import Home from './pages/Home';
 import Products from './pages/Products';
 import Payment from './pages/Payment';
-import Gallery from './pages/Gallery';
+
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Splash from './components/Splash';
@@ -13,7 +13,9 @@ import { Toaster } from 'react-hot-toast';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { FaArrowUp } from 'react-icons/fa';
-
+import Collections from './pages/Collections';
+import About from './pages/About';
+import New from './pages/New';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -162,16 +164,16 @@ export default function App() {
             element={<Products onSelectProduct={handleSelectProduct} />}
           />
           <Route path="/payment" element={<Payment />} />
-          <Route path="/gallery" element={<Gallery />} />
+           <Route path="/new" element={<New />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/collections" element={<Collections />} />
         </Routes>
 
         <Footer />
       </div>
 
       {/* Floating Gallery Button */}
-      <Link to="/gallery" className="floating-gallery-btn">
-        ✨
-      </Link>
+
 
       {/* ✅ Floating Scroll Button */}
       <FloatingScrollButton />

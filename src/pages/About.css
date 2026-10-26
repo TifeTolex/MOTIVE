@@ -1,0 +1,402 @@
+
+.about-page {
+  background: #080808;
+  color: #fff;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+/* HERO */
+.about-hero {
+  position: relative;
+  min-height: 530px;
+  padding: 110px 9% 35px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background:
+    linear-gradient(110deg, rgba(0,0,0,.98), rgba(0,0,0,.7)),
+    url('/images/mv-new.png') center/cover;
+  isolation: isolate;
+}
+
+.about-hero-glow,
+.about-closing-glow {
+  position: absolute;
+  width: 450px;
+  height: 450px;
+  background: rgba(46,196,255,.09);
+  filter: blur(110px);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.about-hero-glow {
+  top: 0;
+  right: -150px;
+}
+
+.about-eyebrow,
+.about-small-title {
+  color: #2ec4ff;
+  font-size: 10px;
+  letter-spacing: 3px;
+  font-weight: 600;
+}
+
+.about-hero h1 {
+  font-size: clamp(65px, 11vw, 135px);
+  line-height: .88;
+  letter-spacing: -7px;
+  font-weight: 950;
+  margin: 30px 0;
+}
+
+.about-hero h1 span,
+.about-story-text h2 span,
+.about-manifesto h2 span,
+.about-closing h2 span {
+  color: #2ec4ff;
+}
+
+.about-hero > p {
+  max-width: 420px;
+  color: #aaa;
+  line-height: 1.8;
+  font-size: 14px;
+}
+
+.about-hero-bottom {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 75px;
+  padding-top: 18px;
+  border-top: 1px solid #333;
+  color: #777;
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+
+/* SECTION LABEL */
+.about-section-label {
+  color: #777;
+  font-size: 11px;
+  letter-spacing: 2px;
+  margin-bottom: 35px;
+}
+
+.about-section-label span {
+  color: #2ec4ff;
+}
+
+/* STORY */
+.about-story {
+  padding: 100px 9%;
+}
+
+.about-story-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 65px;
+}
+
+.about-story-image {
+  position: relative;
+  min-height: 430px;
+  background: #111;
+  overflow: hidden;
+}
+
+.about-story-image img {
+  width: 100%;
+  height: 430px;
+  object-fit: cover;
+  transition: transform .7s ease;
+}
+
+.about-story-image:hover img {
+  transform: scale(1.05);
+}
+
+.about-story-image span {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  font-size: 10px;
+  letter-spacing: 2px;
+  background: rgba(0,0,0,.7);
+  padding: 10px 14px;
+}
+
+.about-story-text h2 {
+  font-size: clamp(35px, 5vw, 65px);
+  line-height: 1;
+  letter-spacing: -2px;
+  margin: 20px 0 30px;
+}
+
+.about-story-text p {
+  color: #999;
+  font-size: 13px;
+  line-height: 2;
+  margin-bottom: 17px;
+}
+
+/* MANIFESTO */
+.about-manifesto {
+  position: relative;
+  text-align: center;
+  padding: 110px 20px;
+  background:
+    radial-gradient(ellipse at center, rgba(46,196,255,.10), transparent 65%),
+    #0d0d0d;
+  border-top: 1px solid #202020;
+  border-bottom: 1px solid #202020;
+}
+
+.about-manifesto > span {
+  color: #2ec4ff;
+  font-size: 10px;
+  letter-spacing: 4px;
+}
+
+.about-manifesto h2 {
+  font-size: clamp(42px, 8vw, 95px);
+  line-height: .95;
+  letter-spacing: -4px;
+  margin: 35px 0;
+  font-weight: 950;
+}
+
+.about-manifesto p {
+  color: #999;
+  font-size: 13px;
+  line-height: 2;
+}
+
+.about-manifesto strong {
+  display: block;
+  color: #2ec4ff;
+  font-size: 11px;
+  letter-spacing: 4px;
+  margin-top: 35px;
+}
+
+/* VALUES */
+.about-values {
+  padding: 100px 9%;
+}
+
+.about-values > h2 {
+  font-size: clamp(28px, 5vw, 50px);
+  margin: 0 0 15px;
+  letter-spacing: -1px;
+}
+
+.about-values-intro {
+  color: #888;
+  font-size: 13px;
+  line-height: 1.8;
+  max-width: 450px;
+  margin-bottom: 45px;
+}
+
+.about-values-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid #292929;
+  border-bottom: 1px solid #292929;
+}
+
+.about-value-card {
+  padding: 35px 23px;
+  border-right: 1px solid #292929;
+  transition: background .3s ease;
+}
+
+.about-value-card:first-child {
+  border-left: 1px solid #292929;
+}
+
+.about-value-card:hover {
+  background: #111;
+}
+
+.about-value-card > span {
+  color: #2ec4ff;
+  font-size: 11px;
+}
+
+.about-value-card h3 {
+  font-size: 17px;
+  margin: 35px 0 15px;
+  letter-spacing: 1px;
+}
+
+.about-value-card p {
+  color: #888;
+  font-size: 12px;
+  line-height: 1.9;
+}
+
+/* CLOSING */
+.about-closing {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  text-align: center;
+  padding: 110px 20px 45px;
+  background: #050505;
+}
+
+.about-closing-glow {
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.about-closing > span {
+  color: #999;
+  font-size: 10px;
+  letter-spacing: 3px;
+}
+
+.about-closing h2 {
+  font-size: clamp(65px, 12vw, 125px);
+  line-height: .9;
+  letter-spacing: -6px;
+  margin: 30px 0;
+  font-weight: 950;
+}
+
+.about-closing > p {
+  color: #999;
+  font-size: 13px;
+  margin-bottom: 35px;
+}
+
+.about-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 20px;
+  padding: 16px 25px;
+  border: 1px solid #2ec4ff;
+  color: #fff;
+  text-decoration: none;
+  font-size: 10px;
+  letter-spacing: 2px;
+  transition: all .3s ease;
+}
+
+.about-cta:hover {
+  background: #2ec4ff;
+  color: #000;
+}
+
+.about-closing-tagline {
+  margin-top: 100px;
+  padding-top: 22px;
+  border-top: 1px solid #222;
+  color: #777;
+  font-size: 10px;
+  letter-spacing: 3px;
+}
+
+/* TABLET */
+@media (max-width: 900px) {
+  .about-story-content {
+    gap: 35px;
+  }
+
+  .about-values-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .about-value-card:nth-child(3) {
+    border-left: 1px solid #292929;
+  }
+
+  .about-value-card:nth-child(n+3) {
+    border-top: 1px solid #292929;
+  }
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+  .about-hero {
+    min-height: 440px;
+    padding: 85px 7% 25px;
+  }
+
+  .about-hero h1 {
+    letter-spacing: -4px;
+  }
+
+  .about-hero > p {
+    font-size: 12px;
+  }
+
+  .about-hero-bottom {
+    margin-top: 55px;
+    font-size: 8px;
+  }
+
+  .about-story,
+  .about-values {
+    padding: 70px 7%;
+  }
+
+  .about-story-content {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+
+  .about-story-image,
+  .about-story-image img {
+    min-height: 300px;
+    height: 300px;
+  }
+
+  .about-story-text h2 {
+    font-size: 43px;
+  }
+
+  .about-manifesto {
+    padding: 85px 15px;
+  }
+
+  .about-manifesto h2 {
+    letter-spacing: -2px;
+  }
+
+  .about-values-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .about-value-card {
+    padding: 25px 13px;
+  }
+
+  .about-value-card h3 {
+    font-size: 14px;
+    margin-top: 25px;
+  }
+
+  .about-value-card p {
+    font-size: 11px;
+  }
+
+  .about-closing {
+    padding-top: 85px;
+  }
+
+  .about-closing h2 {
+    letter-spacing: -3px;
+  }
+
+  .about-closing-tagline {
+    margin-top: 75px;
+  }
+}
