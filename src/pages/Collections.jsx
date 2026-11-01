@@ -1,7 +1,5 @@
 
 import React, { useState } from 'react';
-import ProductCard from '../components/ProductCard';
-import ProductSelector from '../components/ProductSelector';
 import './Collections.css';
 
 const SERIES = [
@@ -13,14 +11,7 @@ const SERIES = [
     description: 'The first expression of the MOTIVE identity.',
     cover: '/images/mv-new.png',
     products: [
-      {
-        id: 'alpha-1',
-        title: 'Motive Tee',
-        price: 15000,
-        img: '/images/mv-new.png',
-        type: 'shirt',
-        comingSoon: false
-      }
+      { id: 'alpha-1', img: '/images/mv-new.png', title: 'Motive Tee' }
     ]
   },
   {
@@ -31,33 +22,10 @@ const SERIES = [
     description: 'A collection built around evolution and expression.',
     cover: '/images/mot 2.png',
     products: [
-      {
-        id: 'beta-1',
-        title: 'Motive Beta Pair',
-        price: 28000,
-        img: '/images/mot 2.png',
-        type: 'accessory',
-        comingSoon: false
-      },
-       {
-        id: 'nova-3',
-        title: 'Motive Joggers',
-        price: 15000,
-        img: '/images/mot 3.png',
-        type: 'accessory',
-        comingSoon: false
-      },
-      {
-       id: 2, title: 'Motive Sleeve shirt', price: 15000,  img: '/images/mot 1.png',  type: 'accessory' , comingSoon: false },
-     
-       {
-        id: 'beta-2',
-        title: 'Motive Beta-Go',
-        price: 8000,
-        img: '/images/Go-series.png',
-        type: 'accessory',
-        comingSoon: false
-      }
+      { id: 'beta-1', img: '/images/mot 2.png', title: 'Beta Pair' },
+      { id: 'beta-2', img: '/images/mot 3.png', title: 'Motive Joggers' },
+      { id: 'beta-3', img: '/images/mot 1.png', title: 'Sleeve Shirt' },
+      { id: 'beta-4', img: '/images/Go-series.png', title: 'Beta-Go' }
     ]
   },
   {
@@ -68,30 +36,9 @@ const SERIES = [
     description: 'Fresh designs. New expressions. Same purpose.',
     cover: '/images/motive armless top.png',
     products: [
-      {
-        id: 'wave-1',
-        title: 'Motive Tank Top',
-        price: 10000,
-        img: '/images/motive armless top.png',
-        type: 'accessory',
-        comingSoon: false
-      },
-      {
-        id: 'wave-2',
-        title: 'Motive Sleeveless',
-        price: 13000,
-        img: '/images/motive tank top.png',
-        type: 'accessory',
-        comingSoon: false
-      },
-      {
-        id: 'wave-3',
-        title: 'Motive Trucker Cap',
-        price: 6000,
-        img: '/images/motive trucker cap.png',
-        type: 'accessory',
-        comingSoon: false
-      }
+      { id: 'wave-1', img: '/images/motive armless top.png', title: 'Motive Tank Top' },
+      { id: 'wave-2', img: '/images/motive tank top.png', title: 'Motive Sleeveless' },
+      { id: 'wave-3', img: '/images/motive trucker cap.png', title: 'Motive Trucker Cap' }
     ]
   },
   {
@@ -102,50 +49,19 @@ const SERIES = [
     description: 'For those who are driven to stand apart.',
     cover: '/images/longsleeve.png',
     products: [
-      {
-        id: 'nova-1',
-        title: 'Motive Long Sleeve',
-        price: 15000,
-        img: '/images/longsleeve.png',
-        type: 'accessory',
-        comingSoon: true
-      },
-      {
-        id: 'nova-2',
-        title: 'Motive Snapback',
-        price: 10000,
-        img: '/images/motive cap.png',
-        type: 'accessory',
-        comingSoon: false
-      },
-     
-      {
-        id: 'nova-4',
-        title: 'Motive Burgundy Cap',
-        price: 7000,
-        img: '/images/burgundy cap.jpg',
-        type: 'accessory',
-        comingSoon: true
-      },
-      {
-        id: 'nova-5',
-        title: 'Motive Hoodie',
-        price: 28000,
-        img: '/images/hoodie.png',
-        type: 'accessory',
-        comingSoon: true
-      }
+      { id: 'nova-1', img: '/images/longsleeve.png', title: 'Motive Long Sleeve' },
+      { id: 'nova-2', img: '/images/motive cap.png', title: 'Motive Snapback' },
+      { id: 'nova-4', img: '/images/burgundy cap.jpg', title: 'Motive Burgundy Cap' },
+      { id: 'nova-5', img: '/images/hoodie.png', title: 'Motive Hoodie' }
     ]
   }
 ];
 
 export default function Collections() {
   const [activeSeries, setActiveSeries] = useState(null);
-  const [selectedProduct, setSelectedProduct] = useState(null);
 
   const toggleSeries = (id) => {
     setActiveSeries(activeSeries === id ? null : id);
-    setSelectedProduct(null);
   };
 
   return (
@@ -159,7 +75,7 @@ export default function Collections() {
         </h1>
 
         <p>
-           Different stories.
+          Different stories.
           One purpose.
         </p>
 
@@ -243,11 +159,13 @@ export default function Collections() {
 
                     <div className="series-products">
                       {series.products.map((product) => (
-                        <ProductCard
-                          key={product.id}
-                          product={product}
-                          onSelect={() => setSelectedProduct(product)}
-                        />
+                        <div className="series-product-image" key={product.id}>
+                          <img
+                            src={product.img}
+                            alt={product.title}
+                            loading="lazy"
+                          />
+                        </div>
                       ))}
                     </div>
 
@@ -273,13 +191,6 @@ export default function Collections() {
         <p>IT'S A STATEMENT OF PURPOSE.</p>
         <span>MOTIVE — DRIVEN BY PURPOSE.</span>
       </section>
-
-      {selectedProduct && (
-        <ProductSelector
-          product={selectedProduct}
-          onClose={() => setSelectedProduct(null)}
-        />
-      )}
 
     </main>
   );
